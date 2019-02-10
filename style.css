@@ -8393,7 +8393,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 31;
   padding: 35px 0 130px;
   color: #353535; }
   .home .header {
@@ -8969,6 +8969,8 @@ body {
   overflow-x: hidden;
   min-height: 100%;
   background: url("assets/img/footer-bg.png") no-repeat bottom center; }
+  .home .wrapper {
+    background-image: none; }
   @media only screen and (min-width: 2260px) {
     .wrapper {
       background-size: cover; } }

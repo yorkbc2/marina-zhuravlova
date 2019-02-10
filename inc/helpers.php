@@ -388,9 +388,14 @@ if (!function_exists('get_default_logo_link')) {
 
         } else {
 
-            $file = get_template_directory_uri() . '/assets/img/logo.svg';
+        	if(is_front_page()) {
+		        $file = get_template_directory_uri() . '/assets/img/logo-light.svg';
+	        } else {
+		        $file = get_template_directory_uri() . '/assets/img/logo-dark.svg';
+	        }
 
             $img = sprintf('<img class="logo-img" src="%s" alt="%s">', esc_url($file), get_bloginfo('name'));
+	        //$img = '<svg class="logo-img" width="480" height="75" fill="#333"><use href="#logo"></use>';
 
             $link = sprintf('<a class="logo-link" href="%s">%s</a>', esc_url(home_url('/')), $img);
 

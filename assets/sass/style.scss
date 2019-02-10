@@ -99,6 +99,10 @@ body {
     min-height: 100%;
     background: image-url('footer-bg.png') no-repeat bottom center;
 
+    .home & {
+        background-image: none;
+    }
+
     @media only screen and (min-width: 2260px) {
         background-size: cover;
     }

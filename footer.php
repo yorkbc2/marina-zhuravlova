@@ -1,5 +1,6 @@
 </div><!-- .page-wrapper end-->
 
+<?php if ( ! is_front_page() ) { ?>
 <footer class="footer js-footer">
     <?php if (is_active_sidebar('footer-widget-area')) : ?>
         <div class="pre-footer">
@@ -62,6 +63,7 @@
         </div>
     </div>
 </footer>
+<?php } ?>
 
 </div><!-- .wrapper end-->
 

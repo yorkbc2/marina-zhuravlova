@@ -3,25 +3,40 @@
     right: 0;
     bottom: 0;
     left: 0;
+    color: #353535;
+    padding: 95px 0 35px;
+
+    [href^=mailto] {
+        color: #353535;
+        border-bottom: 1px solid transparent;
+        @extend %smooth_animation;
+
+        &:hover {
+            border-bottom-color: #353535;
+        }
+    }
+
+    &-social {
+        border-left: 1px solid rgba(#484848, .2);
+        border-right: 1px solid rgba(#484848, .2);
+    }
+
+    .button-outline {
+        color: #353535;
+        border-color: #353535;
+        background-color: transparent;
+        min-width: 230px;
+
+        &:hover,
+        &:active {
+            color: #fff;
+            border-color: #353535;
+            background-color: #353535;
+        }
+    }
 }
 
 .pre-footer {
     padding: 20px 0;
     background-color: lighten($footerBgColor, 10%);
-}
-
-.copyright {
-    padding: 14px 0;
-    background-color: $footerBgColor;
-    text-align: center;
-    color: $footerFontColor;
-
-    a {
-        color: $footerFontColor;
-        text-decoration: underline;
-
-        &:hover {
-            color: $footerLinkColorActive;
-        }
-    }
 }

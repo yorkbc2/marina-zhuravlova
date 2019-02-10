@@ -1,9 +1,42 @@
 //@import url('https://fonts.googleapis.com/css?family=Comfortaa|Lobster&subset=cyrillic');
 
+@import "font-roboto";
+@import "font-playfair";
+
+@font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    src: font-url('bebas/bebas-neue.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Chrei';
+    font-style: normal;
+    font-weight: 400;
+    src: font-url('chrei/chrei.ttf') format('truetype');
+}
+
 //font-family: 'Roboto', sans-serif;
-$font-family-sans-serif: "Arial", "Helvetica", sans-serif;
+$font-family-sans-serif: "Roboto", "Arial", "Helvetica", sans-serif;
 $font-family-serif: "Georgia", "Times New Roman", "Times", serif;
 $font-family-monospace: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
 
 $fontFamilyOne: $font-family-sans-serif; //titles
 $fontFamilyTwo: $font-family-sans-serif; //body
+
+.bebas {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.chrei {
+    font-family: 'Chrei', sans-serif;
+}
+
+.playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.roboto {
+    font-family: "Roboto", "Arial", "Helvetica", sans-serif;
+}

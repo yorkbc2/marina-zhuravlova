@@ -30,19 +30,19 @@ button {
 .button-large {
     @extend %button-style;
     padding: 16px 60px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .button-medium {
     @extend %button-style;
     padding: 14px 25px;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .button-small {
     @extend %button-style;
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .button-inverse {
@@ -54,6 +54,20 @@ button {
     &:active {
         color: $buttonFontColor;
         background-color: $buttonBgColor;
+    }
+}
+
+.button-outline {
+    @extend %button-style;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: rgba(#fff, .2);
+
+    &:hover,
+    &:active {
+        color: #d77a61;
+        border-color: #fff;
+        background-color: #fff;
     }
 }
 
@@ -69,12 +83,12 @@ button {
 
 @media #{$mobile} {
     .button-large {
-        padding: 11px 45px;
+        padding: 14px 45px;
         font-size: 12px;
     }
 
     .button-medium {
-        padding: 9px 22px;
+        padding: 10px 22px;
         font-size: 10px;
     }
 
@@ -86,12 +100,12 @@ button {
 
 @media #{$tablet} {
     .button-large {
-        padding: 12px 50px;
+        padding: 16px 50px;
         font-size: 13px;
     }
 
     .button-medium {
-        padding: 10px 25px;
+        padding: 12px 25px;
         font-size: 11px;
     }
 
@@ -103,13 +117,13 @@ button {
 
 @media #{$laptop} {
     .button-large {
-        padding: 13px 55px;
+        padding: 16px 55px;
         font-size: 14px;
     }
 
     .button-medium {
-        padding: 11px 28px;
-        font-size: 12px;
+        padding: 14px 28px;
+        font-size: 13px;
     }
 
     .button-small {
@@ -120,13 +134,13 @@ button {
 
 @media #{$desktop} {
     .button-large {
-        padding: 14px 60px;
+        padding: 18px 60px;
         font-size: 16px;
     }
 
     .button-medium {
-        padding: 12px 32px;
-        font-size: 14px;
+        padding: 16px 32px;
+        font-size: 13px;
     }
 
     .button-small {
@@ -137,17 +151,17 @@ button {
 
 @media #{$screen} {
     .button-large {
-        padding: 15px 65px;
+        padding: 18px 65px;
         font-size: 18px;
     }
 
     .button-medium {
-        padding: 13px 35px;
-        font-size: 15px;
+        padding: 16px 35px;
+        font-size: 13px;
     }
 
     .button-small {
         padding: 10px 20px;
-        font-size: 13px;
+        font-size: 12px;
     }
 }

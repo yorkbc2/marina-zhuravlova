@@ -1,5 +1,118 @@
+.menu {
+    &-list {
+        @extend %reset-list;
+    }
+
+    &-item {
+        display: inline-block;
+        vertical-align: middle;
+
+        &-has-children {
+            position: relative;
+        }
+
+        &:hover {
+            > .sub-menu {
+                display: block;
+            }
+        }
+
+        &:hover,
+        &-current,
+        &.current-menu-ancestor {
+            > .menu-link {
+                color: #d77a61;
+            }
+        }
+    }
+
+    &-link {
+        display: block;
+        color: inherit;
+        font-size: 22px;
+        line-height: 1.5;
+        text-transform: uppercase;
+        transition: color .2s ease-in-out;
+    }
+
+    &-left {
+        .menu-item {
+            &:not(:last-child) {
+                margin-right: 50px;
+            }
+        }
+    }
+
+    &-right {
+        .menu-item {
+            &:not(:first-child) {
+                margin-left: 50px;
+            }
+        }
+
+        .sub-menu {
+            left: auto;
+            right: 0;
+            //text-align: right;
+
+            .sub-menu {
+                left: auto;
+                right: 100%;
+            }
+        }
+    }
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(#000, .15);
+    padding: 5px 0;
+    @extend %reset-list;
+
+    .sub-menu {
+        top: 0;
+        left: 100%;
+        padding: 0;
+    }
+
+    &-item {
+        &-has-children {
+            position: relative;
+        }
+
+        &:hover {
+            > .sub-menu {
+                display: block;
+            }
+        }
+
+        &:hover,
+        &-current,
+        &.current-menu-ancestor {
+            > .sub-menu-link {
+                color: #d77a61;
+            }
+        }
+    }
+
+    &-link {
+        display: block;
+        padding: 8px 15px;
+        font-size: 16px;
+        line-height: 1.5;
+        transition: color .2s ease-in-out;
+    }
+}
+
+
 .nav {
-    display: block;
+    display: none;
     position: relative;
     margin: 10px 15px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
@@ -63,13 +176,13 @@
 
             &-has-children {
                 position: relative;
-                
+
                 &:hover {
                     &::after {
-                        
+
                     }
                 }
-                
+
                 &::after {
                     content: "";
                     position: absolute;
@@ -132,13 +245,13 @@
 
             &-has-children {
                 position: relative;
-                
+
                 &:hover {
                     &::after {
                         border-left-color: #fff;
                     }
                 }
-                
+
                 &::after {
                     content: "";
                     position: absolute;

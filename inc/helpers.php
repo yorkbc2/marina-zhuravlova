@@ -382,16 +382,13 @@ if (!function_exists('get_default_logo_link')) {
      */
     function get_default_logo_link()
     {
-        $desc = sprintf('<span class="logo-desc screen-reader-text">%s</span>', get_bloginfo('description'));
-
         if (has_custom_logo()) {
 
             the_custom_logo();
-            echo $desc;
 
         } else {
 
-            $file = get_template_directory_uri() . '/assets/img/logo.png';
+            $file = get_template_directory_uri() . '/assets/img/logo.svg';
 
             $img = sprintf('<img class="logo-img" src="%s" alt="%s">', esc_url($file), get_bloginfo('name'));
 
@@ -400,8 +397,6 @@ if (!function_exists('get_default_logo_link')) {
             $span = sprintf('<span class="logo-link">%s</span>', $img);
 
             $html = is_front_page() ? $span : $link;
-
-            $html .= $desc;
 
             echo $html;
         }

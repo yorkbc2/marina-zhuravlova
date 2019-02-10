@@ -58,6 +58,12 @@ em {
         font-weight: bold;
     }
 
+    &-size {
+        &-20 {
+            font-size: 20px;
+        }
+    }
+
 }
 
 .pull-right {
@@ -113,6 +119,15 @@ em {
         border-top-color: #363636;
         animation: spin 1s linear infinite;
     }
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
 }
 
 .is-hide {

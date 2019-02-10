@@ -2,8 +2,8 @@ $debug: false !default;
 $image-url-path: "assets/img/" !default;
 $font-url-path: "assets/fonts/" !default;
 
-$borderRadius: 0px;
-$shadow: 0 0 10px rgba(#000, .2);
+$borderRadius: 0;
+$shadow: none;
 
 // BRAND
 $themeColorOne: #2c3e50; // header, menu, footer, title,
@@ -40,9 +40,9 @@ $navHeaderMobileBGColor: $themeColorTwo;
 $navHamburgerMobileColor: #fff;
 
 $menuMobileBGColor: $themeColorTwo;
-$menuMobileSubMenuBGColor: lighten($themeColorTwo, 10%);
-$menuMobileLinkFontSize: 16px;
-$menuMobileSubMenuLinkFontSize: 14px;
+$menuMobileSubMenuBGColor: darken($themeColorTwo, 2%);
+$menuMobileLinkFontSize: 20px;
+$menuMobileSubMenuLinkFontSize: 18px;
 $menuMobileTextColor: #fff;
 $menuMobileSubMenuTextColor: $menuMobileTextColor;
 $menuMobileSubMenuBGOnHover: $themeColorTwo;
@@ -55,7 +55,7 @@ $hamburger-color: $themeColorTwo;
 
 $menu-close-size: 25px;
 $menu-close-color: #fff;
-$menuContainerMobilePaddingTop: 30%;
+$menuContainerMobilePaddingTop: 25%;
 // MENU END
 
 // FOOTER
@@ -78,7 +78,7 @@ $linkFontColorActive: lighten($linkFontColor, 20%);
 $buttonFontColor: #fff;
 $buttonFontColorActive: #fff;
 $buttonBgColor: $themeColorTwo;
-$buttonBgColorActive: darken($buttonBgColor, 10%);
+$buttonBgColorActive: #d77a61;
 $buttonBorderColor: $themeColorTwo;
 $buttonOutlinedFirstColor: $themeColorTwo;
 $buttonOutlinedSecondColor: #fff;

@@ -46,8 +46,8 @@
     color: $buttonFontColor;
     text-transform: uppercase;
     text-align: center;
-    font-family: inherit;
-    font-weight: 700;
+    font-family: $fontFamilyOne;
+    font-weight: 400;
     box-shadow: $shadow;
     @include smooth_animation;
 

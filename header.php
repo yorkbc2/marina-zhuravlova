@@ -17,62 +17,65 @@
 <?php wp_body(); ?>
 
 <div class="wrapper">
-    <?php /*
-    <div class="pre-header">
+    <header class="header bebas">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <nav class="second-menu">
-                        <?php wp_nav_menu(array(
-                            'theme_location' => 'second-menu',
-                            'container' => false,
-                            'menu_class' => 'menu-container',
-                            'menu_id' => '',
-                            'fallback_cb' => 'wp_page_menu',
-                            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                            'depth' => 2
-                        )); ?>
-                    </nav>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    Some info here
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    Some info here
-                </div>
-            </div>
-        </div>
-    </div>
-    */ ?>
-
-    <header class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <?php get_default_logo_link(); ?>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <?php get_search_form(); ?>
-                </div>
+	        <div class="header-row d-flex align-items-center">
+		        <?php if ( has_nav_menu( 'menu-left' ) ) { ?>
+                    <div class="header-item header-menu">
+                        <nav class="menu menu-left">
+					        <?php wp_nav_menu( array(
+						        'theme_location' => 'menu-left',
+						        'container'      => false,
+						        'menu_class'     => 'menu-list',
+						        'menu_id'        => '',
+						        'fallback_cb'    => 'wp_page_menu',
+						        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						        'depth'          => 3
+					        ) ); ?>
+                        </nav>
+                    </div>
+		        <?php } ?>
+                <div class="header-item header-logo mx-auto"><?php get_default_logo_link(); ?></div>
+		        <?php if ( has_nav_menu( 'menu-right' ) ) { ?>
+                    <div class="header-item header-menu">
+                        <nav class="menu menu-right">
+					        <?php wp_nav_menu( array(
+						        'theme_location' => 'menu-right',
+						        'container'      => false,
+						        'menu_class'     => 'menu-list',
+						        'menu_id'        => '',
+						        'fallback_cb'    => 'wp_page_menu',
+						        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						        'depth'          => 3
+					        ) ); ?>
+                        </nav>
+                    </div>
+		        <?php } ?>
             </div>
         </div>
     </header>
 
-    <?php if (has_nav_menu('main-nav')) { ?>
-        <nav class="nav js-menu">
+    <?php if (has_nav_menu('menu-left') || has_nav_menu('menu-right')) { ?>
+        <nav class="nav js-menu bebas">
             <button type="button" tabindex="0" class="menu-item-close menu-close js-menu-close"></button>
             <?php wp_nav_menu(array(
-                'theme_location' => 'main-nav',
+                'theme_location' => 'menu-left',
                 'container' => false,
                 'menu_class' => 'menu-container',
                 'menu_id' => '',
                 'fallback_cb' => 'wp_page_menu',
                 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                 'depth' => 3
-            )); ?>
+            ));
+            wp_nav_menu(array(
+		        'theme_location' => 'menu-right',
+		        'container' => false,
+		        'menu_class' => 'menu-container',
+		        'menu_id' => '',
+		        'fallback_cb' => 'wp_page_menu',
+		        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		        'depth' => 3
+	        )); ?>
         </nav>
     <?php } ?>
 
@@ -86,3 +89,17 @@
             </button>
             <div class="logo"><?php get_default_logo_link(); ?></div>
         </div>
+
+        <?php /*
+        <button class="button-large">Test</button>
+        <button class="button-medium">Test</button>
+        <button class="button-small">Test</button>
+        <button class="button-large button-inverse">Test</button>
+        <button class="button-medium button-inverse">Test</button>
+        <button class="button-small button-inverse">Test</button>
+        <div style="background-color: #000">
+            <button class="button-large button-outline">Test</button>
+            <button class="button-medium button-outline">Test</button>
+            <button class="button-small button-outline">Test</button>
+        </div>
+        */ ?>

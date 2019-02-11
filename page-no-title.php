@@ -7,11 +7,11 @@ get_header();
 
 if (have_posts()) :
     while (have_posts()) : the_post();
+?>
 
-        if (function_exists('kama_breadcrumbs')) {
-            kama_breadcrumbs(' » ');
-        }
-
+    <div class="sp-xs-10 sp-sm-10 sp-md-1 sp-lg-1 sp-xl-1"></div>  
+      
+<?php
         the_content();
         wp_link_pages();
 

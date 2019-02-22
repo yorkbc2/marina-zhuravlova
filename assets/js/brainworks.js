@@ -21,6 +21,22 @@
             ajaxLoadMorePosts(".js-load-more", ".js-ajax-posts");
         }
         stickFooter(".js-footer", ".js-container");
+        waypoint("#stats", 400).then(function() {
+            $("#stats").find(".counter").each(function(_, el) {
+                el = $(el);
+                var val = 1 * el.text(), c = 0;
+                el.text(c).animate({
+                    opacity: 1
+                }, 500);
+                var i = setInterval(function() {
+                    c++;
+                    el.text(c);
+                    if (c >= val) {
+                        clearInterval(i);
+                    }
+                }, 50);
+            });
+        });
         anotherHamburgerMenu(".js-menu", ".js-hamburger", ".js-menu-close");
         buyOneClick(".one-click", '[data-field-id="field7"]', "h1.page-name");
         d.on("copy", addLink);
@@ -29,10 +45,11 @@
                 removeAllStyles($(".js-menu"));
             }
         });
+        createTabs(".tabs");
     });
     var stickFooter = function stickFooter(footer, container) {
         var el = $(footer);
-        var height = el.outerHeight() + "px";
+        var height = el.outerHeight() + 20 + "px";
         $(container).css("paddingBottom", height);
     };
     var reviews = function reviews(container) {
@@ -220,6 +237,45 @@
             }).fail(function(jqXHR, textStatus, errorThrown) {
                 ajaxStart = false;
                 throw new Error("Handling Ajax request loading posts has caused an ".concat(textStatus, " - ").concat(errorThrown));
+            });
+        });
+    };
+    var createTabs = function createTabs(selector) {
+        if (!selector) return;
+        $(selector).each(function(index, tabs) {
+            var $tabs = $(tabs), $triggers = $tabs.find("h3"), $content = $tabs.find("div").hide();
+            var sliding = false;
+            $triggers.each(function(triggerIndex, trigger) {
+                var $trigger = $(trigger);
+                $trigger.on("click", function(e) {
+                    if (!sliding) {
+                        $triggers.removeClass("active").eq(triggerIndex).addClass("active");
+                        var currentElement = $content.eq(triggerIndex);
+                        sliding = true;
+                        if (currentElement.is(":visible")) {
+                            currentElement.slideUp(300, function() {
+                                return sliding = false;
+                            });
+                        } else {
+                            $content.slideUp(300).eq(triggerIndex).slideDown(300, function() {
+                                return sliding = false;
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    };
+    var waypoint = function waypoint(block, offset) {
+        return new Promise(function(resolve) {
+            var blockY = $(block).offset().top;
+            $(window).on("scroll", function(e) {
+                console.log("scroll");
+                var scroll = document.scrollingElement.scrollTop;
+                if (scroll >= blockY - offset) {
+                    $(window).off("scroll");
+                    resolve();
+                }
             });
         });
     };

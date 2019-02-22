@@ -31,6 +31,10 @@ $fontFamilyTwo: $font-family-sans-serif; //body
 
 .chrei {
     font-family: 'Chrei', sans-serif;
+
+    &--big {
+        font-size: 68px;
+    }
 }
 
 .playfair {

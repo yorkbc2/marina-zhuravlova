@@ -599,3 +599,104 @@ if (!function_exists('bw_reviews_shortcode')) {
 
     add_shortcode('bw-reviews', 'bw_reviews_shortcode');
 }
+
+
+if (!function_exists("bw_reviews_static_shortcode")) {
+    function bw_reviews_static_shortcode() {
+        $args = array(
+            'post_type' => 'reviews',
+            'publish_status' => 'publish',
+            'orderby' => 'post_date',
+            'order' => 'DESC',
+            'posts_per_page' => -1,
+            'meta_query' => array(
+                array(
+                    'key' => 'review-display',
+                    'value' => '1',
+                )
+            ),
+        );
+
+        $query = new WP_Query($args);
+        $output = '';
+        if ($query->have_posts()) {
+            $c = 3;
+            $s = 0;
+            $i = 0;
+            while ($query->have_posts()) {
+                $query->the_post();
+                if ($i === 0) $output .= '<div class="row roboto">';
+
+                    $output .= sprintf('<div class="col-md-4">
+                        <img src="%s" alt="" class="testimonial__image" title="%2$s">
+                        <div class="sp-sm-3"></div>
+                        <h3 class="chrei chrei--big">%s</h5>
+                        <div class="sp-sm-3 sp-xs-5 sp-md-5"></div>
+                        <p class="testimonial__content">%s</p>
+                    </div>', get_the_post_thumbnail_url(get_the_ID(), 'medium'), get_the_title(), get_the_content());
+                $i++;
+                $s++;
+                if ($i >= $c || $s === sizeof($query->posts)) {
+                    $output .= '</div>';
+                    $i = 0;
+                }
+
+            }
+        }
+
+
+        wp_reset_postdata();
+        return $output;
+    }   
+
+    add_shortcode('bw-static-reviews', 'bw_reviews_static_shortcode');
+}
+
+if (!function_exists("bw_packages")) {
+    function bw_packages() {
+        $args = array(
+            'order' => 'ASC',
+            'post_type' => 'packages',
+            'publish_status' => 'publish',
+            'posts_per_page' => -1,
+        );
+
+        $query = new WP_Query($args);
+        $output = '<table class="packages-table">';
+
+        $ohead = '<thead><tr>';
+        $obody = '<tbody><tr>';
+
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $list = '<ul class="packages-list">';
+                $is_special = get_post_meta(get_the_ID(), 'pkg_special', true) === "1";
+                $_list = get_post_meta(get_the_ID(), 'pkg_items', true);
+                foreach ($_list as $l_item) {
+                    $list .= '<li><span>' .$l_item[0]. '</span></li>';
+                }
+                $list .= '</ul>';
+                $ohead .= '<th class="'. ($is_special ? 'special' : '') .'">'. get_the_title() .'</th>';
+                $obody .= '
+                    <td class="'. ($is_special ? 'special' : '') .'">
+                        '.$list.'
+                        <div class="sp-sm-4"></div>
+                        <a href="#" target="_blank" class="button-medium">
+                            Get price
+                        </a>
+                    </td>
+                ';                 
+            }
+        }
+
+        $ohead .= '</tr></thead>';
+        $obody .= '</tr></tbody>';
+        $output .= $ohead . $obody . '</table>';
+
+        wp_reset_postdata();
+        return $output;
+    }   
+
+    add_shortcode('bw-packages', 'bw_packages');
+}

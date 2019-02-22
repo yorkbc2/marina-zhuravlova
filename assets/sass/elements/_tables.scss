@@ -58,3 +58,46 @@ table, thead, tfoot, tbody, tr, th, td {
 //        }
 //    }
 //}
+
+
+.packages-table {
+    th, td {
+        border: 1px solid #e7e7e7;
+    }
+
+    th, td {
+        &,
+        &:first-child,
+        &:last-child {
+            padding: 30px 25px;
+            letter-spacing: 1px;
+            text-align: center;
+            color: #000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: lighter;
+        }
+    }
+
+    th {
+        &,
+        &:first-child,
+        &:last-child {
+            &.special {
+                background-color: $themeColorFive;
+                color: #fff;
+            }
+        }
+    }
+
+    td {
+        &,
+        &:first-child,
+        &:last-child {
+            font-family: "Roboto", sans-serif;
+            &.special .button-medium {
+                background: $themeColorFive;
+            }
+        }
+    }
+
+}

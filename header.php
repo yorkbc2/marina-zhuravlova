@@ -78,8 +78,13 @@
 	        )); ?>
         </nav>
     <?php } ?>
-
-    <div class="container js-container">
+        <?php
+            global $container_class;
+            if (!isset($container_class) || empty($container_class) || !$container_class) {
+                $container_class = "container js-container";
+            }
+        ?>
+    <div class="<?php echo $container_class; ?>">
 
         <div class="nav-mobile-header">
             <button class="hamburger js-hamburger" type="button" tabindex="0">

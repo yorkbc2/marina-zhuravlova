@@ -208,3 +208,159 @@ function bw_save_reviews_addition($post_id)
     }
 
 }
+
+
+add_filter( 'rwmb_meta_boxes', 'about_page_metaboxes' );
+function about_page_metaboxes( $meta_boxes ) {
+    $args = [
+        'post_type' => 'page',
+        'fields' => 'ids',
+        'nopaging' => true,
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'page-about.php'
+    ];
+    $pages = get_posts( $args );
+    if (isset($_GET['post'])) {
+        if (!in_array($_GET['post'], $pages)) {
+            return $meta_boxes;
+        }
+    } else if (isset($_POST['post_ID'])) {
+        if (!in_array($_POST['post_ID'], $pages)) {
+            return $meta_boxes;
+        }
+    }
+
+    if (isset($_GET["post_type"]) && !isset($_GET["post"])) {
+        return $meta_boxes;
+    }
+
+    $meta_boxes[] = array(
+        'title'   => 'About settings',
+        'include' => [
+            'custom' => 'front_page_access',
+            'relation' => 'AND'
+        ],
+        'show_on'	  => array( 'id' => $pages ),
+        'post_types' => array('page'), 
+        'context' => 'advanced',
+        'priority' => 'default',
+        'autosave' => 'false',
+        'fields'  => array(
+            array(
+                'type' => 'text',
+                'name' => 'About me: Header',
+                'id' => 'about_header'
+            ),
+            array(
+                'type' => 'wysiwyg',
+                'name' => 'About me: Content',
+                'id' => 'about_content'
+            ),
+            array(
+				'id' => 'about_columns',
+				'type' => 'text_list',
+				'name' => esc_html__( 'About me: Columns (Maximum: 4)', 'metabox-online-generator' ),
+				'options' => array(
+					'Например, 32' => 'Введите значение колонки',
+					'Например, "Photos"' => 'Введите текст колонки',
+                ),
+                'clone' => 'true'
+			),
+        ),
+    );
+	return $meta_boxes;
+}
+
+
+add_filter( 'rwmb_meta_boxes', 'services_page_metaboxes' );
+function services_page_metaboxes( $meta_boxes ) {
+    $args = [
+        'post_type' => 'page',
+        'fields' => 'ids',
+        'nopaging' => true,
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'page-services.php'
+    ];
+    $pages = get_posts( $args );
+    if (isset($_GET['post'])) {
+        if (!in_array($_GET['post'], $pages)) {
+            return $meta_boxes;
+        }
+    } else if (isset($_POST['post_ID'])) {
+        if (!in_array($_POST['post_ID'], $pages)) {
+            return $meta_boxes;
+        }
+    }
+
+    if (isset($_GET["post_type"]) && !isset($_GET["post"])) {
+        return $meta_boxes;
+    }
+
+    $meta_boxes[] = array(
+        'title'   => 'Services settings',
+        'include' => [
+            'custom' => 'front_page_access',
+            'relation' => 'AND'
+        ],
+        'show_on'	  => array( 'id' => $pages ),
+        'post_types' => array('page'), 
+        'context' => 'advanced',
+        'priority' => 'default',
+        'autosave' => 'false',
+        'fields'  => array(
+            array(
+                'type' => 'text',
+                'name' => 'Special proposition: Header',
+                'id' => 'services_special_proposition_header'
+            ),
+            array(
+				'id' => 'services_special_proposition_items',
+				'type' => 'text_list',
+				'name' => esc_html__( 'Special proposition: Items', 'metabox-online-generator' ),
+				'options' => array(
+					'For example, Themed photoshoot' => 'Value',
+                ),
+                'clone' => 'true'
+			),
+            array(
+				'id' => 'services_tabs',
+				'type' => 'text_list',
+				'name' => esc_html__( 'Tabs', 'metabox-online-generator' ),
+				'options' => array(
+					'Enter tab header here...' => 'Tab header',
+					'Enter tab content here...' => 'Tab content'
+                ),
+                'clone' => 'true'
+			),
+        ),
+    );
+	return $meta_boxes;
+}
+
+add_filter( 'rwmb_meta_boxes', 'packages_metaboxes' );
+function packages_metaboxes( $meta_boxes ) {
+    $meta_boxes[] = array(
+        'title'   => 'Meta-data',
+        'post_types' => array('packages'), 
+        'context' => 'advanced',
+        'priority' => 'default',
+        'autosave' => 'false',
+        'fields'  => array(
+            array(
+				'id' => 'pkg_items',
+				'type' => 'text_list',
+				'name' => esc_html__( 'Items', 'metabox-online-generator' ),
+				'options' => array(
+					'Item here...' => 'Enter item of package',
+                ),
+                'clone' => 'true'
+            ),
+            array(
+                'id' => 'pkg_special',
+                'type' => 'checkbox',
+                'name' => 'Is special ?'
+            )
+        ),
+    );
+	return $meta_boxes;
+}

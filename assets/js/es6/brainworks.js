@@ -26,6 +26,28 @@
             ajaxLoadMorePosts('.js-load-more', '.js-ajax-posts');
         }
         stickFooter('.js-footer', '.js-container');
+        waypoint("#stats", 400)
+            .then(() => {
+                $("#stats") 
+                    .find(".counter")
+                    .each((_, el) => {
+                        el = $(el);
+                        let val = 1 * el.text(),    
+                            c = 0;
+                        el
+                            .text(c)
+                            .animate({
+                                opacity: 1
+                            }, 500);
+                        let i = setInterval(() => {
+                            c++;
+                            el.text(c);
+                            if (c >= val) {
+                                clearInterval(i);
+                            }
+                        }, 50);
+                    })
+            });
         // hamburgerMenu('.js-menu', '.js-hamburger', '.js-menu-close');
         anotherHamburgerMenu('.js-menu', '.js-hamburger', '.js-menu-close');
         buyOneClick('.one-click', '[data-field-id="field7"]', 'h1.page-name');
@@ -37,6 +59,7 @@
                 removeAllStyles($('.js-menu'));
             }
         });
+        createTabs(".tabs");
     });
 
     /**
@@ -473,5 +496,46 @@
 
         });
     };
+
+
+    const createTabs = selector => {
+        if (!selector) return;
+        $(selector).each((index, tabs) => {
+            const $tabs = $(tabs),
+                $triggers = $tabs.find("h3"),
+                $content  = $tabs.find("div").hide();
+            
+            let sliding = false;
+            $triggers.each((triggerIndex, trigger) => {
+                const $trigger = $(trigger);
+                $trigger.on('click', (e) => {
+                    if (!sliding) {
+                        $triggers.removeClass("active").eq(triggerIndex).addClass("active");
+                        const currentElement = $content.eq(triggerIndex);
+                        sliding = true;
+                        if (currentElement.is(':visible')) {
+                            currentElement.slideUp(300, () => sliding = false);
+                        } else {
+                            $content.slideUp(300).eq(triggerIndex).slideDown(300, () => sliding = false);
+                        }
+                    }
+                });
+            }); 
+        });
+    };
+
+    const waypoint = (block, offset) => {
+        return new Promise(resolve => {
+            let blockY = $(block).offset().top;
+            $(window).on('scroll', (e) => {
+                console.log('scroll');
+                let scroll = document.scrollingElement.scrollTop;
+                if (scroll >= blockY - offset) {
+                    $(window).off('scroll');
+                    resolve();
+                }
+            });
+        });
+    } 
 
 })(window, document, jQuery, window.jpAjax);

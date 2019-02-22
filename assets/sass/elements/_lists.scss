@@ -2,3 +2,24 @@ ul,
 ol {
     padding-left: 20px;
 }
+
+
+ul.packages-list {
+    margin: 0;
+    padding: 0;
+    li {
+        margin-bottom: 8px;
+        list-style: none;
+        span {
+            font-family: "Roboto", sans-serif;
+            font-weight: lighter;
+            position: relative;
+            &::before {
+                content: "\25CF";
+                position: absolute;
+                left: -10px;
+                font-size: 10px;
+            }
+        }
+    }
+}

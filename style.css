@@ -415,8 +415,26 @@ select {
 @font-face {
   font-family: 'Bebas Neue';
   font-style: normal;
+  font-weight: 100;
+  src: url("assets/fonts/bebas/bebas-neue-thin.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 300;
+  src: url("assets/fonts/bebas/bebas-neue-light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
   font-weight: 400;
-  src: url("assets/fonts/bebas/bebas-neue.ttf") format("truetype"); }
+  src: url("assets/fonts/bebas/bebas-neue-regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 700;
+  src: url("assets/fonts/bebas/bebas-neue-bold.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'Chrei';
@@ -8743,6 +8761,7 @@ body {
   display: block;
   color: inherit;
   font-size: 22px;
+  font-weight: 300;
   line-height: 1.5;
   text-transform: uppercase;
   -webkit-transition: color .2s ease-in-out;
@@ -9196,6 +9215,11 @@ body {
 .pre-footer {
   padding: 20px 0;
   background-color: #3e5871; }
+
+::-moz-selection {
+  background-color: #f3baa5;
+  color: #fff;
+  text-shadow: none; }
 
 ::selection {
   background-color: #f3baa5;

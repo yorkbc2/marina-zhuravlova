@@ -157,7 +157,7 @@ if (!function_exists('bw_auth_rest_endpoint')) {
         return wp_redirect(home_url() . $redirect);
     }
 
-    add_action('init', function () {
+    add_action('rest_api_init', function () {
         register_rest_route('api', 'auth/login', [
             'methods' => 'POST',
             'callback' => 'bw_auth_rest_endpoint'
@@ -198,7 +198,7 @@ if (!function_exists('bw_auth_rest_register')) {
         }
     }
 
-    add_action('init', function () {
+    add_action('rest_api_init', function () {
         register_rest_route('api', 'auth/register', [
             'methods' => 'POST',
             'callback' => 'bw_auth_rest_register'
@@ -213,7 +213,7 @@ if (!function_exists('bw_auth_rest_logout')) {
         return wp_redirect(home_url());
     }
 
-    add_action('init', function () {
+    add_action('rest_api_init', function () {
         register_rest_route('api', 'auth/logout', [
             'methods' => 'GET',
             'callback' => 'bw_auth_rest_logout'

@@ -1,14 +1,34 @@
 //@import url('https://fonts.googleapis.com/css?family=Comfortaa|Lobster&subset=cyrillic');
-
 @import "font-roboto";
 @import "font-playfair";
+
+//@font-face {
+//    font-family: 'Bebas Neue';
+//    font-style: normal;
+//    font-weight: 100;
+//    src: font-url('bebas/bebas-neue-thin.ttf') format('truetype');
+//}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 300;
+    src: font-url('bebas/bebas-neue-light.ttf') format('truetype');
+}
 
 @font-face {
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: 400;
-    src: font-url('bebas/bebas-neue.ttf') format('truetype');
+    src: font-url('bebas/bebas-neue-regular.ttf') format('truetype');
 }
+
+//@font-face {
+//    font-family: 'Bebas Neue';
+//    font-style: normal;
+//    font-weight: 700;
+//    src: font-url('bebas/bebas-neue-bold.ttf') format('truetype');
+//}
 
 @font-face {
     font-family: 'Chrei';

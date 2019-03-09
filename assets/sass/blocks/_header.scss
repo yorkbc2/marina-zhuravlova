@@ -1,0 +1,162 @@
+.pre-header {
+    padding: 5px 0;
+    background-color: $preHeaderBgColor;
+    color: $preHeaderColor;
+}
+
+.page-header {
+    padding: 10px 0;
+    background-color: $headerBgColor;
+    color: $headerFontColor;
+}
+
+body {
+    background: #fff image-url('header-bg.png') no-repeat top center;
+
+    @media only screen and (min-width: 2260px) {
+        background-size: cover;
+    }
+
+    &.home {
+        background-image: none;
+    }
+}
+
+.header {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 31;
+    padding: 35px 20px 130px 20px;
+    color: #353535;
+
+    .home & {
+        position: absolute;
+        padding: 35px 20px;
+        color: #fff;
+        background-color: rgba(#bb5416, .3);
+    }
+
+    &-row {
+
+    }
+
+    &-item {
+
+    }
+
+    &-logo {
+
+    }
+}
+
+.logo {
+    &,
+    &-link,
+    &-img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.phone {
+    @extend %reset-list;
+
+    &,
+    &-item {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &-item {
+        margin: 0 5px;
+    }
+
+    &-number {
+        color: #353535;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        @extend %smooth_animation;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom-color: #353535;
+        }
+    }
+}
+
+.social {
+    @extend %reset-list;
+    font-size: 0;
+
+    &,
+    &-item {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &-item {
+        margin: 0 4px;
+    }
+
+    &-link {
+        display: block;
+        width: 68px;
+        height: 68px;
+        color: #fff;
+        font-size: 18px;
+        line-height: 68px;
+        border-radius: 50%;
+        background-color: #f3baa5;
+        text-align: center;
+        text-decoration: none;
+        @extend %smooth_animation;
+
+        &:hover {
+            color: #fff;
+            background-color: darken(#f3baa5, 5%);
+        }
+    }
+}
+
+.messenger {
+    @extend %reset-list;
+
+    &,
+    &-item {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &-item {
+        margin: 0 5px;
+    }
+
+    &-link {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+        }
+    }
+}
+
+.lang {
+    @extend %reset-list;
+
+    &,
+    &-item {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &-item {
+        margin: 0 5px;
+
+        a {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+@import "font-playfair";
+
+//@font-face {
+//    font-family: 'Bebas Neue';
+//    font-style: normal;
+//    font-weight: 100;
+//    src: font-url('bebas/bebas-neue-thin.ttf') format('truetype');
+//}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 300;
+    src: font-url('bebas/bebas-neue-light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    src: font-url('bebas/bebas-neue-regular.ttf') format('truetype');
+}
+
+//@font-face {
+//    font-family: 'Bebas Neue';
+//    font-style: normal;
+//    font-weight: 700;
+//    src: font-url('bebas/bebas-neue-bold.ttf') format('truetype');
+//}
+
+@font-face {
+    font-family: 'Chrei';
+    font-style: normal;
+    font-weight: 400;
+    src: font-url('chrei/chrei.ttf') format('truetype');
+}
+
+//font-family: 'Roboto', sans-serif;
+$font-family-sans-serif: "Roboto", "Arial", "Helvetica", sans-serif;
+$font-family-serif: 'Playfair Display', serif;
+$font-family-monospace: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+
+$fontFamilyOne: $font-family-serif; //titles
+$fontFamilyTwo: $font-family-serif; //body
+
+.bebas {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.chrei {
+    font-family: 'Chrei', sans-serif;
+
+    &--big {
+        font-size: 68px;
+    }
+}
+
+.playfair {
+    font-family: 'Playfair Display', serif;
+}

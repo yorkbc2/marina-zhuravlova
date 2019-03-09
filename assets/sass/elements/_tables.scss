@@ -1,0 +1,157 @@
+table {
+    border-collapse: collapse;
+    //border-spacing: 2px;
+    //background-color: $tableBgColor;
+    width: 100%;
+    text-align: center;
+}
+
+tr > th:first-child,
+tr > td:first-child {
+    font-weight: 600;
+    text-align: left;
+}
+
+tbody > tr:first-child th {
+    font-weight: 600;
+}
+
+table, thead, tfoot, tbody, tr, th, td {
+    border: 1px solid $tableBorderColor;
+    padding: 5px;
+}
+
+// Widget Calendar
+//table#wp-calendar {
+//    text-align: center;
+//
+//    caption {
+//        color: $themeColorTwo;
+//    }
+//
+//    thead {
+//        tr {
+//            th {
+//
+//            }
+//        }
+//    }
+//
+//    tfoot {
+//        tr {
+//            td {
+//
+//            }
+//        }
+//    }
+//
+//    tbody {
+//        tr {
+//            td {
+//
+//            }
+//
+//            td#today {
+//                background-color: $themeColorTwo;
+//                color: $themeColorOne;
+//            }
+//        }
+//    }
+//}
+
+
+.packages-table {
+    max-width: 95%;
+    margin: 0 auto;
+    .table-mobile-header {
+        display: none;
+    }
+    th, td {
+        border: 1px solid #e7e7e7;
+    }
+
+    th, td,
+    .table-mobile-header {
+        &,
+        &:first-child,
+        &:last-child {
+            padding: 30px 25px;
+            letter-spacing: 1px;
+            text-align: center;
+            color: #000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: lighter;
+
+            @media screen and (max-width: 768px) {
+                padding: 15px 25px;
+            }
+        }
+    }
+
+    th,
+    .table-mobile-header {
+        &,
+        &:first-child,
+        &:last-child {
+            font-size: 22px;
+            font-weight: 500;
+        }
+    }
+
+    th,
+    .table-mobile-header {
+        &,
+        &:first-child,
+        &:last-child {
+                    
+            &.table-mobile-header--special,
+            &.special {
+                background-color: $themeColorFive;
+                color: #fff;
+            }
+        }
+    }
+
+    td {
+        &,
+        &:first-child,
+        &:last-child {
+            font-family: $fontFamilyOne;
+            &.special .button-medium {
+                background: $themeColorFive;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        thead {
+            display: none;
+        }
+        .table-mobile-header {
+            &,
+            &:first-child {
+                padding-top: 20px;
+            }
+            display: block;
+            margin-bottom: 25px;
+        }
+        td {
+            &,
+            &:first-child,
+            &:last-child {
+                display: flex;
+                flex-direction: column; 
+                justify-content: space-between;
+                width: 100%;
+                padding: 0;
+                padding-bottom: 25px;
+                .packages-list,
+                a {
+                    margin-right: 25px;
+                    margin-left: 25px;
+                }
+            }
+        }
+    }
+
+}

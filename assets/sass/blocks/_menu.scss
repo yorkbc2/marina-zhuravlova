@@ -11,10 +11,12 @@
             position: relative;
         }
 
-        &:hover {
-            > .sub-menu {
-                display: block;
-                opacity: 0.9;
+        @media screen and (min-width: 768px) {
+            &:hover {
+                > .sub-menu {
+                    display: block;
+                    opacity: 0.9;
+                }
             }
         }
 

@@ -36,7 +36,8 @@
                     .each((_, el) => {
                         el = $(el);
                         let val = 1 * el.text(),    
-                            c = 0;
+                            c = 0,
+                            s = 2000;
                         el
                             .text(c)
                             .animate({
@@ -48,7 +49,7 @@
                             if (c >= val) {
                                 clearInterval(i);
                             }
-                        }, 50);
+                        }, s / val);
                     })
             });
         // hamburgerMenu('.js-menu', '.js-hamburger', '.js-menu-close');
@@ -233,7 +234,7 @@
             Elements.menu.toggleClass('is-active');
         });
 
-        Elements.menu.find('a').on('click', () => {
+        Elements.menu.find('li:not(.menu-item-has-children) a').on('click', () => {
             Elements.menu.removeClass('is-active');
         });
 
@@ -535,7 +536,6 @@
         return new Promise(resolve => {
             let blockY = $(block).offset().top;
             $(window).on('scroll', (e) => {
-                console.log('scroll');
                 let scroll = document.scrollingElement.scrollTop;
                 if (scroll >= blockY - offset) {
                     $(window).off('scroll');

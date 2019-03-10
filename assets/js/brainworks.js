@@ -25,7 +25,7 @@
         waypoint("#stats", 400).then(function() {
             $("#stats").find(".counter").each(function(_, el) {
                 el = $(el);
-                var val = 1 * el.text(), c = 0;
+                var val = 1 * el.text(), c = 0, s = 2e3;
                 el.text(c).animate({
                     opacity: 1
                 }, 500);
@@ -35,7 +35,7 @@
                     if (c >= val) {
                         clearInterval(i);
                     }
-                }, 50);
+                }, s / val);
             });
         });
         anotherHamburgerMenu(".js-menu", ".js-hamburger", ".js-menu-close");
@@ -99,7 +99,7 @@
         Elements.button.add(Elements.close).on("click", function() {
             Elements.menu.toggleClass("is-active");
         });
-        Elements.menu.find("a").on("click", function() {
+        Elements.menu.find("li:not(.menu-item-has-children) a").on("click", function() {
             Elements.menu.removeClass("is-active");
         });
         var arrowOpener = function arrowOpener(parent) {
@@ -274,7 +274,6 @@
         return new Promise(function(resolve) {
             var blockY = $(block).offset().top;
             $(window).on("scroll", function(e) {
-                console.log("scroll");
                 var scroll = document.scrollingElement.scrollTop;
                 if (scroll >= blockY - offset) {
                     $(window).off("scroll");

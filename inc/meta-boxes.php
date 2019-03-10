@@ -265,7 +265,12 @@ function about_page_metaboxes( $meta_boxes ) {
 					'Например, "Photos"' => 'Введите текст колонки',
                 ),
                 'clone' => 'true'
-			),
+            ),
+            array(
+                'id' => 'about_image',
+                'type' => 'image_advanced',
+                'name' => __('About me: Image', 'brainworks')
+            )
         ),
     );
 	return $meta_boxes;

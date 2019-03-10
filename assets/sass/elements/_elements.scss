@@ -38,7 +38,12 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;		
-			 
+		&--offset-left {
+			padding-left: 25px;
+			@media screen and (max-width: 768px) {
+				padding-left: 0px;	
+			}
+		}
 	}
 	&__item_content {
 		position: relative;
@@ -197,3 +202,17 @@
 	}
 
 } 
+
+.col-slash {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: -4px;
+	font-size: 42px;
+	color: $themeColorOne;
+	transform: translateY(-50%);
+
+	@media screen and (max-width: 768px) {
+		display: none;
+	}
+}

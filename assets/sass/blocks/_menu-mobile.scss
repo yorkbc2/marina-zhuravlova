@@ -7,7 +7,6 @@
     nav.main-nav {
         display: none;
     }
-
     .nav-mobile-header {
         display: block;
         position: fixed;
@@ -28,6 +27,12 @@
             position: absolute;
             top: 15px;
             right: 10px;
+        }
+    }
+
+    .home {
+        .nav-mobile-header {
+            background-color: rgba($navHeaderMobileBGColor, 0.7);
         }
     }
 
@@ -126,6 +131,9 @@
                 color: $menuMobileTextColor;
                 display: block;
                 font-size: $menuMobileLinkFontSize;
+                &:hover {
+                    color: $menuMobileTextColor;
+                }
             }
         }
 
@@ -134,7 +142,7 @@
             width: auto;
             display: none;
             visibility: visible;
-            background-color: $menuMobileSubMenuBGColor;
+            background-color: $menuMobileBGColor;
             opacity: 1;
             box-shadow: none;
             transition: none;
@@ -163,4 +171,6 @@
             }
         }
     }
+
+    .menu-item:hover > .menu-link {color: #fff;}
 }

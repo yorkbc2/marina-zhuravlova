@@ -158,6 +158,10 @@ img {
     padding: 10px 0;
     font-size: 14px;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 768px) {
+        padding-top: 30px;
+    }
 }
 
 .page-name {
@@ -272,4 +276,10 @@ img {
 
 .ct_icon_effect3:before, .ct_icon_effect3:after {
     background-color: #fff;
+}
+
+.page:not(.home) {
+    .wrapper {
+        padding-top: 40px;
+    }
 }

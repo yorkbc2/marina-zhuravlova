@@ -7,7 +7,7 @@
 ?>
 
 
-<div class="sp-sm-4 sp-xs-6"></div>
+<div class="sp-sm-4 sp-xs-1"></div>
 
 <section class="block">
     <div class="container">

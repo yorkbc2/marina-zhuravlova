@@ -37,7 +37,7 @@
 	            <?php } ?>
             </div>
             <div class="col-md-4 footer-social footer-item">
-                <p class="mb-15"><em><?php _e('Follow', 'brainworks'); ?> @zhuralvova.m</em></p>
+                <p class="mb-15"><em><?php _e('Follow', 'brainworks'); ?> @zhuravlova.m</em></p>
 	            <?php if (has_social()) { ?>
                     <ul class="social">
 			            <?php foreach (get_social() as $name => $social) { ?>

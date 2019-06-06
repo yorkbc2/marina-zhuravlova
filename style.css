@@ -8465,6 +8465,36 @@ a:hover .fa {
     .block {
       margin-top: 30px; } }
 
+.testimonial__socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  max-width: 150px;
+  margin: 0 auto;
+  -webkit-transform: translateY(-50px);
+  -ms-transform: translateY(-50px);
+  transform: translateY(-50px); }
+  .testimonial__socials a {
+    background-color: #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    border: 1px solid #000; }
+    .testimonial__socials a i {
+      font-size: 18px;
+      color: #fff;
+      -ms-flex-item-align: center;
+      align-self: center; }
+
 .testimonial__content {
   position: relative;
   font-family: "Robooto" ,sans-serif;

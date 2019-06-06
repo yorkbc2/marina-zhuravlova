@@ -625,10 +625,52 @@ if (!function_exists("bw_reviews_static_shortcode")) {
             $i = 0;
             while ($query->have_posts()) {
                 $query->the_post();
+                $id = get_the_ID();
                 if ($i === 0) $output .= '<div class="row roboto">';
-
+                    $socials = array(
+                        'vk' => array(
+                            'url' => get_post_meta($id, 'review-vk', true),
+                            'icon' => 'fa-vk',
+                        ),
+                        'youtube' => array(
+                            'url' => get_post_meta($id, 'review-youtube', true),
+                            'icon' => 'fa-youtube',
+                        ),
+                        'twitter' => array(
+                            'url' => get_post_meta($id, 'review-twitter', true),
+                            'icon' => 'fa-twitter',
+                        ),
+                        'facebook' => array(
+                            'url' => get_post_meta($id, 'review-facebook', true),
+                            'icon' => 'fa-facebook-f',
+                        ),
+                        'linkedin' => array(
+                            'url' => get_post_meta($id, 'review-linkedin', true),
+                            'icon' => 'fa-linkedin-in',
+                        ),
+                        'instagram' => array(
+                            'url' => get_post_meta($id, 'review-instagram', true),
+                            'icon' => 'fa-instagram',
+                        ),
+                        'google-plus' => array(
+                            'url' => get_post_meta($id, 'review-google-plus', true),
+                            'icon' => 'fa-google-plus-g',
+                        ),
+                        'odnoklassniki' => array(
+                            'url' => get_post_meta($id, 'review-odnoklassniki', true),
+                            'icon' => 'fa-odnoklassniki',
+                        ),
+                    );
+                    $social_output = '';
+                    foreach ($socials as $soc) {
+                        if ($soc['url'])
+                            $social_output .= '<a href="'.$soc['url'].'" target="_blank"><i class="fab '.$soc['icon'].'"></i></a>';
+                    }
                     $output .= sprintf('<div class="col-md-4">
                         <img src="%s" alt="" class="testimonial__image" title="%2$s">
+                        <div class="testimonial__socials">
+                        '.$social_output.'
+                        </div>
                         <div class="sp-sm-3"></div>
                         <h3 class="chrei chrei--big">%s</h5>
                         <div class="sp-sm-3 sp-xs-5 sp-md-5"></div>

@@ -104,12 +104,13 @@
         });
         var arrowOpener = function arrowOpener(parent) {
             var activeArrowClass = "menu-item-has-children-arrow-active";
-            return $("<button />").addClass("menu-item-has-children-arrow").on("click", function() {
+            return $("<button />").addClass("menu-item-has-children-arrow").add(parent).on("click", function() {
                 parent.children(".sub-menu").eq(0).slideToggle(300);
-                if ($(this).hasClass(activeArrowClass)) {
-                    $(this).removeClass(activeArrowClass);
+                var el = parent.find("button");
+                if (el.hasClass(activeArrowClass)) {
+                    el.removeClass(activeArrowClass);
                 } else {
-                    $(this).addClass(activeArrowClass);
+                    el.addClass(activeArrowClass);
                 }
             });
         };
@@ -253,7 +254,13 @@
                 var $trigger = $(trigger);
                 $trigger.on("click", function(e) {
                     if (!sliding) {
-                        $triggers.removeClass("active").eq(triggerIndex).addClass("active");
+                        $triggers.each(function(i) {
+                            if ($(this).hasClass("active")) {
+                                $(this).removeClass("active");
+                            } else {
+                                if (triggerIndex === i) $(this).addClass("active");
+                            }
+                        });
                         var currentElement = $content.eq(triggerIndex);
                         sliding = true;
                         if (currentElement.is(":visible")) {
@@ -292,11 +299,19 @@
                 $el.prop("disabled", false);
                 REVIEWS_PAGE++;
                 var _row = row.clone(), container = $el.parents(".container").find(".reviews-container").eq(0), review = container.find(".col-md-4").eq(0);
-                data.forEach(function(i) {
-                    $.get(mediaUrl + i.featured_media).done(function(response) {
-                        _row.append(review.clone().css("margin-top", "30px").find("img").attr("src", response.source_url).end().find("h3").html(i.title.rendered).end().find(".testimonial__content").html(i.content.rendered).end()).appendTo(container);
+                var promises = data.map(function(i) {
+                    return new Promise(function(resolve) {
+                        fetch(mediaUrl + i.featured_media).then(function(data) {
+                            return data.json();
+                        }).then(function(response) {
+                            _row.append(review.clone().css("margin-top", "30px").find(".testimonial__image").attr("src", response[0].source_url).end().find("h3").html(i.title.rendered).end().find(".testimonial__content").html(i.content.rendered).end().find(".testimonial__socials").html(i.socials ? Object.keys(i.socials).map(function(key) {
+                                var obj = i.socials[key];
+                                return '<a href="'.concat(obj.url, '" target="_blank"><i class="fab ').concat(obj.icon, '"></i>');
+                            }) : "").end()).appendTo(container);
+                        });
                     });
                 });
+                Promise.all(promises);
             }).fail(function() {
                 return $el.remove();
             });
